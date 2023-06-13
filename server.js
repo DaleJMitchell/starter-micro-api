@@ -2,9 +2,18 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
+const cors = require('cors');
+
 
 // Configure body-parser middleware to parse JSON data 
 app.use(bodyParser.json());
+
+app.use(
+  cors({
+    origin: ['http://localhost:8080', 'https://dalejmitchell.github.io'],
+  })
+);
+
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
@@ -13,7 +22,6 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   next();
 });
-
 
 // Define a helper function to format the email message as HTML
 function formatEmailMessage(formData) {

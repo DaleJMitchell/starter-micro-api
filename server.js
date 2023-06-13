@@ -7,8 +7,8 @@ const nodemailer = require('nodemailer');
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
   res.setHeader('Access-Control-Allow-Origin', 'https://dalejmitchell.github.io');
-  res.appendHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   next();
